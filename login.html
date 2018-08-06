@@ -6,11 +6,10 @@
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <title>登录页面</title>
     <link rel="stylesheet" href="layui-2.3.0/css/layui.css">
-    <link rel="stylesheet" href="css/default.css">
     <!--必要样式-->
     <link rel="stylesheet" href="css/login.css">
-    <link rel="stylesheet" href="css/demo.css">
-    <link rel="stylesheet" href="css/loaders.css">
+    <!--CSS加载动画框架Loaders.css-->
+   <link rel="stylesheet" href="css/loaders.css">
 
     <script type="text/javascript" src="layui-2.3.0/layui.js"></script>
 </head>
@@ -51,8 +50,7 @@
             <input type='button' value='登录'>
         </div>
     </div>
-    <div class='success'>
-    </div>
+
     <div class='disclaimer'>
         <p>欢迎登录后台管理系统</p>
     </div>
@@ -74,18 +72,20 @@
 
 <script type="text/javascript" src="js/jquery.min.js"></script>
 <script type="text/javascript" src="js/jquery-ui.min.js"></script>
-<script type="text/javascript" src='js/stopExecutionOnTimeout.js?t=1'></script>
+<!--粒子背景依赖js-->
 <script type="text/javascript" src="js/Particleground.js"></script>
-<script type="text/javascript" src="js/Treatment.js"></script>
+<!--登录页面功能相关的js-->
+<script type="text/javascript" src="js/login.js"></script>
+<!--使用 jQuery Mockjax 插件模拟Ajax请求-->
 <script type="text/javascript" src="js/jquery.mockjax.js"></script>
 <script type="text/javascript">
-    var canGetCookie = 0;//是否支持存储Cookie 0 不支持 1 支持
     var ajaxmockjax = 1;//是否启用虚拟Ajax的请求响 0 不启用  1 启用
     //默认账号密码
-
     var truelogin = "123456";
     var truepwd = "123456";
 
+    //生成验证码  start
+    var canGetCookie = 0;//是否支持存储Cookie 0 不支持 1 支持
     var CodeVal = 0;
     Code();
     function Code() {
@@ -98,6 +98,7 @@
         }
     }
     function showCheck(a) {
+        debugger;
         CodeVal = a;
         var c = document.getElementById("myCanvas");
         var ctx = c.getContext("2d");
@@ -106,17 +107,23 @@
         ctx.fillStyle = "#E8DFE8";
         ctx.fillText(a, 0, 100);
     }
+    //生成验证码  start
+
+    //登录回车键事件
     $(document).keypress(function (e) {
         // 回车键事件
         if (e.which == 13) {
             $('input[type="button"]').click();
         }
     });
+
+
     //粒子背景特效
     $('body').particleground({
         dotColor: '#E8DFE8',
         lineColor: '#133b88'
     });
+
     $('input[name="pwd"]').focus(function () {
         $(this).attr('type', 'password');
     });
@@ -140,13 +147,15 @@
             }, 200);
         }
     });
-    var open = 0;
+
+
     layui.use('layer', function () {
         var msgalert = '默认账号:' + truelogin + '<br/> 默认密码:' + truepwd;
         var index = layer.alert(msgalert, { icon: 6, time: 4000, offset: 't', closeBtn: 0, title: '友情提示', btn: [], anim: 2, shade: 0 });
         layer.style(index, {
             color: '#777'
         });
+
         //非空验证
         $('input[type="button"]').click(function () {
             var login = $('input[name="login"]').val();
@@ -160,7 +169,6 @@
                 ErroAlert('输入验证码');
             } else {
                 //认证中..
-                fullscreen();
                 $('.login').addClass('test'); //倾斜特效
                 setTimeout(function () {
                     $('.login').addClass('testtwo'); //平移特效
@@ -213,9 +221,9 @@
                             if (data.Status == 'ok') {
                                 //登录成功
                                 $('.login div').fadeOut(100);
-                                $('.success').fadeIn(1000);
-                                $('.success').html(data.Text);
+
                                 //跳转操作
+                                window.location.href="main.html";
 
                             } else {
                                 AjaxErro(data);
@@ -225,18 +233,8 @@
             }
         })
     })
-    var fullscreen = function () {
-        elem = document.body;
-        if (elem.webkitRequestFullScreen) {
-            elem.webkitRequestFullScreen();
-        } else if (elem.mozRequestFullScreen) {
-            elem.mozRequestFullScreen();
-        } else if (elem.requestFullScreen) {
-            elem.requestFullscreen();
-        } else {
-            //浏览器不支持全屏API或已被禁用
-        }
-    }
+
+    //模拟Ajax请求
     if(ajaxmockjax == 1){
         $.mockjax({
             url: 'Ajax/Login',
