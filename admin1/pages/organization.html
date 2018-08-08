@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>组织机构管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../layui-2.3.0/css/layui.css">
+    <script type="text/javascript" src="../../layui-2.3.0/layui.js"></script>
+    <script type="text/javascript" src="../js/organization.js"></script>
+    <style>
+        .b1{
+            background-color: #1AA094;
+            height:100%;
+        }
+        .b2{
+            background-color: #00F7DE;
+            height:100%;
+        }
+        .layui-card-header{
+
+        }
+        .layui-card-header{
+            background-color: #009688;
+            color: #FFFFFF;
+        }
+        body .layui-tree-skin-shihuang .layui-tree-branch{color: #EDCA50;}
+    </style>
+</head>
+<body>
+<div style="height: 50px;"></div>
+<div class="layui-container" >
+    <div class="layui-row layui-col-space30"  >
+        <div class="layui-col-md5 ">
+            <div class="layui-card layui-bg-gray">
+                <div class="layui-card-header">组织机构树</div>
+                <div class="layui-card-body">
+                    <ul id="layuitree"></ul>
+                </div>
+            </div>
+
+        </div>
+        <div class="layui-col-md7">
+            <div class="layui-row">
+                <div class="layui-col-md7">
+                    <div class="layui-btn-container">
+                        <button class="layui-btn layui-btn-radius">新增顶级机构</button>
+                        <button class="layui-btn layui-btn-radius">新增下级机构</button>
+                        <button class="layui-btn layui-btn-radius">新增人员</button>
+                    </div>
+                </div>
+                <!--<div class="layui-col-md7"></div>-->
+            </div>
+            <div class="layui-tab layui-tab-card">
+                <ul class="layui-tab-title">
+                    <li class="layui-this">机构信息</li>
+                    <li>人员信息</li>
+
+                </ul>
+                <div class="layui-tab-content" style="height: 100px;">
+                    <div class="layui-tab-item layui-show" id="tab1">1</div>
+                    <div class="layui-tab-item">2</div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</body>
+</html>

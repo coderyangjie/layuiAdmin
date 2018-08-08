@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>用户管理</title>
+    <meta name="renderer" content="webkit">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
+    <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+    <link rel="stylesheet" href="../../layui-2.3.0/css/layui.css">
+    <script type="text/javascript" src="../../layui-2.3.0/layui.js"></script>
+    <script type="text/javascript" src="../js/usermanage.js"></script>
+    <style>
+
+        .layui-elem-field{
+            border-color:#009688;
+        }
+
+        /*修改table的样式*/
+
+    </style>
+</head>
+<body>
+<div style="height: 50px;"></div>
+<div class="layui-container">
+    <div class="layui-row">
+        <fieldset class="layui-elem-field" >
+            <legend>查询表单</legend>
+            <div class="layui-field-box">
+                <form class="layui-form" action="" style="margin-left: 5%;">
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">账户名称：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="accountname" id="accountname" autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户姓名：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="username" id="username" autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">手机号码：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="mobile" id="mobile" autocomplete="off" class="layui-input"/>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">所属角色：</label>
+                            <div class="layui-input-inline">
+                                <select name="roles">
+                                    <option value="">请选择角色名称</option>
+                                    <option value="123456" >超级管理员</option>
+                                    <option value="23245">普通管理员</option>
+                                    <option value="34656">财务部人员</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="layui-inline">
+                            <label class="layui-form-label">用户状态：</label>
+                            <div class="layui-input-inline">
+                                <input type="radio" name="state" value="1" title="可用" checked="">
+                                <input type="radio" name="state" value="0" title="不可用">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">创建时间：</label>
+                            <div class="layui-input-inline">
+                                <input type="text" name="startdate" id="startdate" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                            </div>
+                            <div class="layui-form-mid">--</div>
+                            <div class="layui-input-inline">
+                                <input type="text" name="enddate" id="enddate" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
+                            </div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+        </fieldset>
+    </div>
+
+    <div class="layui-row"  >
+        <table class="layui-hide" id="mytable"></table>
+    </div>
+</div>
+</body>
+</html>
