@@ -15,7 +15,7 @@
             border-color:#009688;
         }
 
-        /*修改table的样式*/
+        /* 修改table的样式 start */
         .layui-table thead tr{
             background-color: #009688;
             color:white;
@@ -26,10 +26,17 @@
         .layui-table-sort .layui-table-sort-desc{
             border-top-color: white;
         }
+        /* 修改table的样式 end */
+        /* 修改表单label宽度 */
+        .layui-form-label{
+            width: 85px;
+        }
+
+
+
     </style>
 </head>
 <body>
-<div style="height: 50px;"></div>
 <div class="layui-container">
     <div class="layui-row">
         <fieldset class="layui-elem-field" >
@@ -57,6 +64,18 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
+                        <div class="layui-inline">
+                            <label class="layui-form-label">所属用户组：</label>
+                            <div class="layui-input-inline">
+                                <select name="roles">
+                                    <option value="">请选择用户组名称</option>
+                                    <option value="123456" >办公人员</option>
+                                    <option value="23245">外派人员</option>
+                                    <option value="34656">领导组</option>
+                                    <option value="34656">信息技术人员组</option>
+                                </select>
+                            </div>
+                        </div>
                         <div class="layui-inline">
                             <label class="layui-form-label">所属角色：</label>
                             <div class="layui-input-inline">
@@ -87,6 +106,13 @@
                                 <input type="text" name="enddate" id="enddate" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                             </div>
                         </div>
+                        <div class="layui-inline" style="float: right;">
+                            <button class="layui-btn layui-btn-normal"><i class="layui-icon layui-icon-add-circle"></i>新增</button>
+                            <button class="layui-btn layui-btn-normal"><i class="layui-icon layui-icon-search"></i>查询</button>
+                            <button class="layui-btn layui-btn-normal"><i class="layui-icon layui-icon-refresh"></i>重置</button>
+                            <button class="layui-btn layui-btn-normal">导出数据</button>
+                        </div>
+
                     </div>
                 </form>
             </div>
@@ -94,7 +120,13 @@
     </div>
 
     <div class="layui-row"  >
-        <table class="layui-hide" id="mytable"></table>
+        <table class="layui-hide" id="mytable" lay-filter="operation"></table>
+        <!--表格列工具条模板-->
+        <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+            <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
+            <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
+        </script>
     </div>
 </div>
 </body>

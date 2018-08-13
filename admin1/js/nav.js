@@ -36,9 +36,15 @@ var navs = [{
                 "spread" : false
             },
             {
-                "title" : "二级菜单2",
+                "title" : "用户组管理",
                 "icon" : "&#xe631;",
-                "href" : "",
+                "href" : "pages/usergroup.html",
+                "spread" : false
+            },
+            {
+                "title" : "用户组管理",
+                "icon" : "&#xe631;",
+                "href" : "pages/usergroup.html",
                 "spread" : false
             }
         ]
