@@ -42,17 +42,12 @@ var navs = [{
                 "spread" : false
             },
             {
-                "title" : "用户组管理",
+                "title" : "角色管理",
                 "icon" : "&#xe631;",
-                "href" : "pages/usergroup.html",
+                "href" : "pages/rolemanage.html",
                 "spread" : false
             }
         ]
-},{
-	"title" : "系统基本参数",
-	"icon" : "&#xe631;",
-	"href" : "pages/systemParameter/systemParameter.html",
-	"spread" : false
 },{
 	"title" : "二级菜单演示",
 	"icon" : "&#xe61c;",
