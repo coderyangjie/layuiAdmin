@@ -4,14 +4,14 @@ var navs = [{
 	"href" : "pages/main.html",
 	"spread" : false
 },{
-	"title" : "文章列表",
+	"title" : "树形下拉选择框",
 	"icon" : "icon-text",
-	"href" : "pages/news/newsList.html",
+	"href" : "pages/testSelectTree.html",
 	"spread" : false
 },{
-	"title" : "友情链接",
+	"title" : "FontAwesome矢量图标",
 	"icon" : "icon-text",
-	"href" : "pages/links/linksList.html",
+	"href" : "pages/FontAwesomeIconDemo.html",
 	"spread" : false
 },{
 	"title" : "404页面",
@@ -46,7 +46,20 @@ var navs = [{
                 "icon" : "&#xe631;",
                 "href" : "pages/rolemanage.html",
                 "spread" : false
+            },
+            {
+                "title" : "角色赋权",
+                "icon" : "&#xe631;",
+                "href" : "pages/roleempowerment.html",
+                "spread" : false
+            },
+            {
+                "title" : "权限资源管理",
+                "icon" : "&#xe631;",
+                "href" : "pages/resourcemanage.html",
+                "spread" : false
             }
+
         ]
 },{
 	"title" : "二级菜单演示",
