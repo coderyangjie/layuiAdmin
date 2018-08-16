@@ -51,11 +51,12 @@ var tabledata=[
 ];
 
 
-layui.use(['element','form','jquery','laydate','table'],function(){
+layui.use(['element','form','jquery','laydate','table','layer'],function(){
     var element=layui.element
         ,form = layui.form
         ,$=layui.jquery
-        ,laydate = layui.laydate;
+        ,laydate = layui.laydate
+        ,layer = layui.layer;
 
     //日期初始化
     laydate.render({
@@ -65,15 +66,15 @@ layui.use(['element','form','jquery','laydate','table'],function(){
         elem: '#enddate'
     });
 
+    //初始化数据表格
     var table = layui.table;
-
     table.render({
         elem: '#mytable'
         ,data:tabledata
         ,cols: [[
             {type:'checkbox'}
             ,{field:'accountname',title: '账号名称'}
-            ,{field:'username',title: '用户名称'}
+            ,{field:'username',title: '用户姓名'}
             ,{field:'usergroupname', title: '所属用户组'}
             ,{field:'rolename', title: '所属角色'}
             ,{field:'mobile', title: '手机号码',width:116}
@@ -86,15 +87,13 @@ layui.use(['element','form','jquery','laydate','table'],function(){
         ,page: true
     });
 
-    //监听工具条
+    //数据表格监听工具条
     table.on('tool(operation)', function(obj){ //注：tool是工具条事件名，test是table原始容器的属性 lay-filter="对应的值"
         var data = obj.data; //获得当前行数据
         var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
         var tr = obj.tr; //获得当前行 tr 的DOM对象
 
-        if(layEvent === 'detail'){ //查看
-            alert(data);
-        } else if(layEvent === 'del'){ //删除
+        if(layEvent === 'del'){ //删除
             layer.confirm('真的删除行么', function(index){
                 obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                 layer.close(index);
@@ -102,15 +101,38 @@ layui.use(['element','form','jquery','laydate','table'],function(){
             });
         } else if(layEvent === 'edit'){ //编辑
             //do something
-
+            var index = layer.open({
+                type:1,
+                title:"编辑",
+                skin:"myclass",
+                area:["50%"],
+                content:$("#userlayer").html()
+            });
             //同步更新缓存对应的值
             obj.update({
                 username: '123'
                 ,title: 'xxx'
             });
+
+            /* 渲染表单 */
+            form.render();
         }
     });
 
+    //新增按钮的点击事件
+    $("#addUserBtn").click(function(){
+        /* 再弹出添加界面 */
+        layer.open({
+            type:1,
+            title:"新增用户",
+            skin:"myclass",
+            area:["50%"],
+            content:$("#userlayer").html()
+        });
+
+        /* 渲染表单 */
+        form.render();
+    });
 
 
 
