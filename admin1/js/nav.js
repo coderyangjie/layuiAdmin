@@ -4,6 +4,11 @@ var navs = [{
 	"href" : "pages/main.html",
 	"spread" : false
 },{
+    "title" : "formSelects-v4",
+    "icon" : "icon-text",
+    "href" : "pages/formSelectsV4.html",
+    "spread" : false
+},{
 	"title" : "树形下拉选择框",
 	"icon" : "icon-text",
 	"href" : "pages/testSelectTree.html",

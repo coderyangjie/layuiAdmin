@@ -7,11 +7,11 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge,chrome=1">
     <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
     <link rel="stylesheet" href="../../layui-2.3.0/css/layui.css">
-    <script type="text/javascript" src="../../layui-2.3.0/layui.js"></script>
     <!-- 引入样式 -->
     <link rel="stylesheet" type="text/css" href="../css/formSelects-v4.css"/>
+    <script type="text/javascript" src="../../layui-2.3.0/layui.js"></script>
     <!-- 引入组件 -->
-   <script src="../js/formSelects-v4.js" type="text/javascript" charset="utf-8"></script>
+  <script src="../js/formSelects-v4.js" type="text/javascript" charset="utf-8"></script>
 
 </head>
 <body>
@@ -28,14 +28,14 @@
 
 <script type="text/javascript">
     //非模块化使用
-/*    var formSelects = layui.formSelects;
+/*   var formSelects = layui.formSelects;
     formSelects.render('selectId');*/
 
 
 //模块化使用1
     //全局定义一次, 加载formSelects
- /*layui.config({
-        base: 'js/' //此处路径请自行处理, 可以使用绝对路径
+layui.config({
+        base: '../js/' //此处路径请自行处理, 可以使用绝对路径
     }).extend({
         formSelects: 'formSelects-v4'
     });
@@ -43,15 +43,15 @@
     layui.use(['jquery', 'formSelects'], function(){
         var formSelects = layui.formSelects;
         formSelects.render('selectId');
-    });*/
+    });
 
     //模块化使用2
-    layui.config({
-        base: 'js/' //此处路径请自行处理, 可以使用绝对路径
+/*    layui.config({
+        base: '../js/' //此处路径请自行处理, 可以使用绝对路径
     }).use(['jquery', 'formSelects'], function(){
         var formSelects = layui.formSelects;
         formSelects.render('selectId');
-    });
+    });*/
 
 </script>
 </body>
