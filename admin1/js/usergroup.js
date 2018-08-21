@@ -120,13 +120,7 @@ layui.use(['element','form','jquery','laydate','table'],function(){
         ,$=layui.jquery
         ,laydate = layui.laydate;
 
-    //日期初始化
-    laydate.render({
-        elem: '#startdate'
-    });
-    laydate.render({
-        elem: '#enddate'
-    });
+
 
     var table = layui.table;
 
@@ -152,8 +146,21 @@ layui.use(['element','form','jquery','laydate','table'],function(){
         var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
         var tr = obj.tr; //获得当前行 tr 的DOM对象
 
-        if(layEvent === 'detail'){ //查看
-            alert(data);
+        if(layEvent === 'set'){ //查看
+            //弹出一个tab层，用于设置用户组的人员和用户组的角色
+            layer.tab({
+                area: ['800px', '600px'],
+                tab: [{
+                    title: '设置用户组成员',
+                    content: '内容1'
+                }, {
+                    title: '设置用户组角色',
+                    content: '内容2'
+                }, {
+                    title: '设置用户组权限',
+                    content: '内容3'
+                }]
+            });
         } else if(layEvent === 'del'){ //删除
             layer.confirm('真的删除行么', function(index){
                 obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
@@ -162,15 +169,42 @@ layui.use(['element','form','jquery','laydate','table'],function(){
             });
         } else if(layEvent === 'edit'){ //编辑
             //do something
+            var index = layer.open({
+                type:1,
+                title:"编辑",
+                skin:"myclass",
+                area:["30%"],
+                content:$("#usergroup").html()
+            });
 
             //同步更新缓存对应的值
             obj.update({
                 username: '123'
                 ,title: 'xxx'
             });
+
+            /* 渲染表单 */
+            form.render();
         }
     });
 
 
+    //新增按钮的点击事件
+    $("#addBtn").click(function(){
+
+        /* 再弹出添加界面 */
+        layer.open({
+            type:1,
+            title:"新增用户组",
+            skin:"myclass",
+            area:["30%"],
+            content:$("#usergroup").html()
+        });
+
+
+        /* 渲染表单 */
+        form.render();
+
+    });
 
 });

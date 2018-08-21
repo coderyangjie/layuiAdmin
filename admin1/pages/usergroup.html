@@ -22,6 +22,9 @@
             border-top-color: white;
         }
         /* 修改table的样式 end */
+
+        /* 弹出层样式 */
+        body .myclass .layui-layer-content{padding: 20px;}
     </style>
 </head>
 <body>
@@ -29,7 +32,7 @@
 <div class="layui-container">
     <div class="layui-row">
         <blockquote class="layui-elem-quote">
-            <form class="layui-form" action="">
+            <div class="layui-form" action="">
                 <div class="layui-form-item">
                     <div class="layui-inline">
                         <label class="layui-form-label" style="width: 100px;">用户组名称：</label>
@@ -44,12 +47,12 @@
                         </div>
                     </div>
                     <div class="layui-inline" style="float: right;">
-                        <button class="layui-btn layui-btn-normal"><i class="layui-icon layui-icon-add-circle"></i>新增</button>
+                        <button class="layui-btn layui-btn-normal" id="addBtn"><i class="layui-icon layui-icon-add-circle"></i>新增</button>
                         <button class="layui-btn layui-btn-normal"><i class="layui-icon layui-icon-search"></i>查询</button>
                         <button class="layui-btn layui-btn-normal"><i class="layui-icon layui-icon-refresh"></i>重置</button>
                     </div>
                 </div>
-            </form>
+            </div>
         </blockquote>
     </div>
 
@@ -57,12 +60,45 @@
         <table class="layui-hide" id="mytable" lay-filter="operation"></table>
         <!--表格列工具条模板-->
         <script type="text/html" id="barDemo">
-            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="detail">查看</a>
+            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="set">设置</a>
             <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
         </script>
     </div>
 </div>
 
+<!-- 需要弹出的用户组新增或修改界面 -->
+<div class="layui-row" id="usergroup" style="display: none;">
+    <div class="layui-col-md12">
+        <form class="layui-form" id="addUserForm">
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width: 100px;">用户组名称：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="groupname" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width: 100px;">排序值：</label>
+                <div class="layui-input-inline">
+                    <input type="text" name="sortvalue" class="layui-input">
+                </div>
+            </div>
+            <div class="layui-form-item">
+                <label class="layui-form-label" style="width: 100px;">启用状态：</label>
+                <div class="layui-input-inline">
+                    <input type="radio" name="state" value="1" title="启用" checked>
+                    <input type="radio" name="state" value="0" title="废除">
+                </div>
+            </div>
+
+            <div class="layui-form-item" style="text-align: center;">
+                <button type="button" class="layui-btn layui-btn-normal">提交</button>
+                <button type="button" class="layui-btn layui-btn-normal">取消</button>
+            </div>
+        </form>
+    </div>
+</div>
+
 </body>
+
 </html>

@@ -32,6 +32,7 @@
             width: 85px;
         }
 
+        /* 弹出层样式 */
         body .myclass .layui-layer-content{padding: 20px;}
 
 
@@ -65,7 +66,7 @@
                         </div>
                     </div>
                     <div class="layui-form-item">
-                        <div class="layui-inline">
+              <!--          <div class="layui-inline">
                             <label class="layui-form-label">所属用户组：</label>
                             <div class="layui-input-inline">
                                 <select name="roles">
@@ -87,16 +88,16 @@
                                     <option value="34656">财务部人员</option>
                                 </select>
                             </div>
-                        </div>
+                        </div>-->
+
+
                         <div class="layui-inline">
                             <label class="layui-form-label">用户状态：</label>
                             <div class="layui-input-inline">
-                                <input type="radio" name="state" value="1" title="可用" checked="">
-                                <input type="radio" name="state" value="0" title="不可用">
+                                <input type="radio" name="state" value="1" title="启用" checked="">
+                                <input type="radio" name="state" value="0" title="废除">
                             </div>
                         </div>
-                    </div>
-                    <div class="layui-form-item">
                         <div class="layui-inline">
                             <label class="layui-form-label">创建时间：</label>
                             <div class="layui-input-inline">
@@ -107,7 +108,12 @@
                                 <input type="text" name="enddate" id="enddate" lay-verify="date" placeholder="yyyy-MM-dd" autocomplete="off" class="layui-input">
                             </div>
                         </div>
-                        <div class="layui-inline" style="float: right;">
+
+
+                    </div>
+                    <div class="layui-form-item" style="text-align: center;">
+
+                        <div class="layui-inline" >
                             <button class="layui-btn layui-btn-normal" id="addUserBtn"><i class="layui-icon layui-icon-add-circle"></i>新增</button>
                             <button class="layui-btn layui-btn-normal"><i class="layui-icon layui-icon-search"></i>查询</button>
                             <button class="layui-btn layui-btn-normal"><i class="layui-icon layui-icon-refresh"></i>重置</button>
@@ -124,6 +130,7 @@
         <table class="layui-hide" id="mytable" lay-filter="operation"></table>
         <!--表格列工具条模板-->
         <script type="text/html" id="barDemo">
+            <a class="layui-btn layui-btn-primary layui-btn-xs" lay-event="set">设置</a><!--查看用户基本信息-->
             <a class="layui-btn layui-btn-xs" lay-event="edit">编辑</a>
             <a class="layui-btn layui-btn-danger layui-btn-xs" lay-event="del">删除</a>
         </script>
@@ -177,7 +184,7 @@
                     </div>
                 </div>
             </div>
-            <div class="layui-form-item">
+        <!--    <div class="layui-form-item">
                 <div class="layui-inline">
                     <label class="layui-form-label">用户角色：</label>
                     <div class="layui-input-inline">
@@ -201,7 +208,7 @@
                         </select>
                     </div>
                 </div>
-            </div>
+            </div>-->
             <div class="layui-form-item" style="text-align: center;">
                     <button type="button" class="layui-btn layui-btn-normal">提交</button>
                     <button type="button" class="layui-btn layui-btn-normal">取消</button>

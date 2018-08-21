@@ -75,13 +75,11 @@ layui.use(['element','form','jquery','laydate','table','layer'],function(){
             {type:'checkbox'}
             ,{field:'accountname',title: '账号名称'}
             ,{field:'username',title: '用户姓名'}
-            ,{field:'usergroupname', title: '所属用户组'}
-            ,{field:'rolename', title: '所属角色'}
-            ,{field:'mobile', title: '手机号码',width:116}
-            ,{field:'sex',title: '性别',width:60}
-            ,{field:'creattime',title: '创建时间',width:102}
-            ,{field:'creater',title: '创建人',width:80}
-            ,{field:'state',title: '状态',width:60}
+            ,{field:'mobile', title: '手机号码'}
+            ,{field:'sex',title: '性别'}
+            ,{field:'creattime',title: '创建时间'}
+            ,{field:'creater',title: '创建人'}
+            ,{field:'state',title: '状态'}
             ,{fixed: 'right',title:"操作",align:'center', toolbar: '#barDemo',width:165}
         ]]
         ,page: true
@@ -93,7 +91,23 @@ layui.use(['element','form','jquery','laydate','table','layer'],function(){
         var layEvent = obj.event; //获得 lay-event 对应的值（也可以是表头的 event 参数对应的值）
         var tr = obj.tr; //获得当前行 tr 的DOM对象
 
-        if(layEvent === 'del'){ //删除
+        if(layEvent === 'set'){
+            //弹出一个tab层，用于设置用户组和角色
+            layer.tab({
+                area: ['800px', '600px'],
+                tab: [{
+                    title: '设置用户组',
+                    content: '内容1'
+                }, {
+                    title: '设置用户角色',
+                    content: '内容2'
+                }, {
+                    title: '设置用户权限',
+                    content: '内容3'
+                }]
+            });
+
+        }else if(layEvent === 'del'){ //删除
             layer.confirm('真的删除行么', function(index){
                 obj.del(); //删除对应行（tr）的DOM结构，并更新缓存
                 layer.close(index);
@@ -108,6 +122,8 @@ layui.use(['element','form','jquery','laydate','table','layer'],function(){
                 area:["50%"],
                 content:$("#userlayer").html()
             });
+
+
             //同步更新缓存对应的值
             obj.update({
                 username: '123'
