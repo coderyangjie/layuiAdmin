@@ -53,15 +53,21 @@ var navs = [{
                 "spread" : false
             },
             {
-                "title" : "角色赋权",
-                "icon" : "&#xe631;",
-                "href" : "pages/roleempowerment.html",
-                "spread" : false
-            },
-            {
                 "title" : "权限资源管理",
                 "icon" : "&#xe631;",
                 "href" : "pages/resourcemanage.html",
+                "spread" : false
+            },
+            {
+                "title" : "用户角色查询",
+                "icon" : "&#xe631;",
+                "href" : "pages/queryroles.html",
+                "spread" : false
+            },
+            {
+                "title" : "用户权限查询",
+                "icon" : "&#xe631;",
+                "href" : "pages/querypermission.html",
                 "spread" : false
             }
 

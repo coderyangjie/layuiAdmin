@@ -156,9 +156,6 @@ layui.use(['element','form','jquery','laydate','table'],function(){
                 }, {
                     title: '设置用户组角色',
                     content: '内容2'
-                }, {
-                    title: '设置用户组权限',
-                    content: '内容3'
                 }]
             });
         } else if(layEvent === 'del'){ //删除

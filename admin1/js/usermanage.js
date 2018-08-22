@@ -101,9 +101,6 @@ layui.use(['element','form','jquery','laydate','table','layer'],function(){
                 }, {
                     title: '设置用户角色',
                     content: '内容2'
-                }, {
-                    title: '设置用户权限',
-                    content: '内容3'
                 }]
             });
 
