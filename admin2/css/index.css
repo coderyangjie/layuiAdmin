@@ -1050,6 +1050,8 @@
     td.visible-xs {
         display: table-cell !important;
     }
+
+
     .hidden-xs {
         display: none !important;
     }
@@ -1364,12 +1366,50 @@
 .layui-nav-no-bg .layui-nav-bar {
     display: none;
 }
+
+.layui-table th, .layui-table td{
+    color: black;
+}
+.layui-table th{
+    font-weight: bold;
+}
+
+.layui-btn-mini{
+    height: 22px;
+    line-height: 22px;
+    padding: 0 5px;
+    font-size: 12px;
+}
+
 .showSubBtn {
     width: 16px;
     height: 16px;
     line-height: 16px;
     margin-left: 5px;
 }
+
+.layui-btn-mini i{
+    font-size: 14px!important;
+}
+
+.layui-btn-small{
+    height: 30px;
+    line-height: 30px;
+    padding: 0 10px;
+    font-size: 12px;
+}
+
+.add-btn{
+    width:24px;
+}
+.edit-btn{
+    width:24px;
+}
+.del-btn{
+    width:24px;
+}
+
+
 .commentList .item {
     list-style: none outside none;
     margin: 1.6rem 0 0;
@@ -1655,7 +1695,7 @@
 .main-layout-header {
     height: 60px;
     border-bottom: 1px solid #f0f0f0;
-    background: #fff;
+    background: #444c63;
 }
 .main-layout-header a {
     text-decoration: none;
@@ -1669,7 +1709,7 @@
 }
 .main-layout-header .menu-btn .iconfont {
     font-size: 20px;
-    color: #444c63;
+    color: #ffff;
 }
 .main-layout-header .layui-nav {
     float: right;

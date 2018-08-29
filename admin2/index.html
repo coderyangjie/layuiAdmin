@@ -7,14 +7,31 @@
     <link rel="stylesheet" href="../layui-2.3.0/css/layui.css">
     <link rel="stylesheet" href="css/index.css">
     <script type="text/javascript" src="../layui-2.3.0/layui.js" charset="utf-8"></script>
+    <script type="text/javascript" src="js/nav.js" charset="UTF-8"></script>
+    <script  type="text/javascript" src="js/common.js" charset="utf-8"></script>
+    <script  type="text/javascript" src="js/index.js" charset="utf-8"></script>
+    <script type="text/javascript">
+        layui.use(['jquery','layer','form'],function(){
+            var $=layui.jquery;
+            var layer = layui.layer;
+            var form = layui.form;
+            var leftNavHtml = leftNavBar(navs);
+            $("#left_nav").append(leftNavHtml);
+
+        });
+
+    </script>
 </head>
 <body>
     <div class="main-layout" id='main-layout'>
         <!--侧边栏-->
         <div class="main-layout-side">
             <div class="m-logo">
+            </div >
+            <div id="left_nav">
+
             </div>
-            <ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
+  <!--          <ul class="layui-nav layui-nav-tree" lay-filter="leftNav">
                 <li class="layui-nav-item layui-nav-itemed">
                     <a href="javascript:;"><i class="iconfont">&#xe607;</i>菜单管理</a>
                     <dl class="layui-nav-child">
@@ -53,7 +70,7 @@
                 <li class="layui-nav-item">
                     <a href="javascript:;" data-url="system.html" data-id='6' data-text="系统设置"><i class="iconfont">&#xe60b;</i>系统设置</a>
                 </li>
-            </ul>
+            </ul>-->
         </div>
         <!--右侧内容-->
         <div class="main-layout-container">
@@ -97,11 +114,10 @@
 
     <script type="text/javascript">
         var scope={
-            link:'./welcome.html'
+            link:'pages/welcome.html'
         }
     </script>
 
-    <script src="js/common.js" type="text/javascript" charset="utf-8"></script>
-    <script src="js/index.js" type="text/javascript" charset="utf-8"></script>
+
 </body>
 </html>

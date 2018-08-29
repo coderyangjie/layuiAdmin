@@ -1,5 +1,14 @@
+
+
+//获取当前网址
+var curWwwPath = window.document.location.href;
+//获取主机地址之后的目录
+var pathName = window.document.location.pathname;
+var pos = curWwwPath.indexOf(pathName);
+//获取主机地址
+var localHostPath = curWwwPath.substring(0,pos);
 layui.config({
-	base: 'js/modules/'
+	base: localHostPath+'/layuiAdmin/admin2/js/modules/'
 }).extend({
 	dialog: 'dialog',
 });

@@ -1,0 +1,16 @@
+/*
+ *伪类名:  dtxs
+ *作用域:  用于动态控制显示单元格中的内容,div对象的内容；表格中单元格内容过多时以省略号显示
+*/
+.dtxs {
+    font-size : 12px;
+    text-decoration : none;
+    text-align:left;
+    WHITE-SPACE:nowrap;
+    overflow:hidden;
+    text-overflow:ellipsis;
+    height:100%;
+    width:100%;
+    margin-top:2px;
+    margin-left:4px;
+}

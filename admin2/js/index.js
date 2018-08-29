@@ -12,10 +12,17 @@ layui.use(['layer', 'form', 'element', 'jquery', 'dialog'], function() {
     var mainMask = $('.main-mask');
     //监听导航点击
     element.on('nav(leftNav)', function(elem) {
+        //elem为当前点击的DOM对象
         var navA = $(elem).find('a');
-        var id = navA.attr('data-id');
+        var dataset = navA.context.dataset;
+
+     /*   var id = navA.attr('data-id');
         var url = navA.attr('data-url');
-        var text = navA.attr('data-text');
+        var text = navA.attr('data-text');*/
+        var id = dataset.id;
+        var url = dataset.url;
+        var text = dataset.text;
+
         if(!url){
             return;
         }
@@ -93,3 +100,68 @@ layui.use(['layer', 'form', 'element', 'jquery', 'dialog'], function() {
 //		  }
 //		});
 });
+
+/**
+ * 初始化左侧侧边栏导航条
+ * @param data
+ */
+function leftNavBar(data){
+    var ulHtml = '<ul class="layui-nav layui-nav-tree" lay-filter="leftNav">';
+    for(var i=0;i<data.length;i++){
+        //判断该菜单项是否展开
+        if(data[i].spread){
+            ulHtml += '<li class="layui-nav-item layui-nav-itemed">';
+        }else{
+            ulHtml += '<li class="layui-nav-item">';
+        }
+        //判断该菜单项是否有下级菜单
+        if(data[i].children != undefined && data[i].children.length > 0){
+            ulHtml += '<a href="javascript:;">';
+            if(data[i].icon != undefined && data[i].icon != ''){
+                if(data[i].icon.indexOf("icon-") != -1){
+                    ulHtml += '<i class="iconfont '+data[i].icon+'" data-icon="'+data[i].icon+'"></i>';
+                }else if(data[i].icon.indexOf("layui-") != -1) {
+                    ulHtml += '<i class="layui-icon ' + data[i].icon + '" data-icon="' + data[i].icon + '"></i>';
+
+                }else{
+                    ulHtml += '<i class="iconfont" data-icon="'+data[i].icon+'">'+data[i].icon+'</i>';
+                }
+            }
+            ulHtml += '<cite>'+data[i].title+'</cite>';
+            ulHtml += '<span class="layui-nav-more"></span>';
+            ulHtml += '</a>'
+            ulHtml += '<dl class="layui-nav-child">';
+            for(var j=0;j<data[i].children.length;j++){
+                ulHtml += '<dd><a href="javascript:;" data-url="'+data[i].children[j].href+'" data-id="'+data[i].children[j].id+'" data-text="'+data[i].children[j].title+'">';
+                if(data[i].children[j].icon != undefined && data[i].children[j].icon != ''){
+                    if(data[i].children[j].icon.indexOf("icon-") != -1){
+                        ulHtml += '<i class="iconfont '+data[i].children[j].icon+'" data-icon="'+data[i].children[j].icon+'"></i>';
+                    }else if(data[i].children[j].icon.indexOf("layui-") != -1){
+                        ulHtml += '<i class="layui-icon '+data[i].children[j].icon+'" data-icon="'+data[i].children[j].icon+'"></i>';
+                    }else if(data[i].children[j].icon.indexOf("l-line") != -1){
+                        ulHtml += '<i class="' + data[i].children[j].icon + '" data-icon="' + data[i].children[j].icon + '"></i>';
+                    }else{
+                        ulHtml += '<i class="iconfont" data-icon="'+data[i].children[j].icon+'">'+data[i].children[j].icon+'</i>';
+                    }
+                }
+                ulHtml += '<cite>'+data[i].children[j].title+'</cite></a></dd>';
+            }
+            ulHtml += "</dl>"
+        }else{
+            ulHtml += '<a href="javascript:;" data-url="'+data[i].href+'" data-id="'+data[i].id+'" data-text="'+data[i].title+'" >';
+            if(data[i].icon != undefined && data[i].icon != ''){
+                if(data[i].icon.indexOf("icon-") != -1){
+                    ulHtml += '<i class="iconfont '+data[i].icon+'" data-icon="'+data[i].icon+'"></i>';
+                }else if(data[i].icon.indexOf("layui-") != -1){
+                    ulHtml += '<i class="layui-icon '+data[i].icon+'" data-icon="'+data[i].icon+'"></i>';
+                }else{
+                    ulHtml += '<i class="iconfont" data-icon="'+data[i].icon+'">'+data[i].icon+'</i>';
+                }
+            }
+            ulHtml += '<cite>'+data[i].title+'</cite></a>';
+        }
+        ulHtml += '</li>'
+    }
+    ulHtml += '</ul>';
+    return ulHtml;
+}
