@@ -1393,21 +1393,24 @@
 }
 
 .layui-btn-small{
+    width: 36px;
     height: 30px;
     line-height: 30px;
     padding: 0 10px;
     font-size: 12px;
 }
 
+
 .add-btn{
-    width:24px;
-}
+     width:24px;
+ }
 .edit-btn{
     width:24px;
 }
-.del-btn{
+ .del-btn{
     width:24px;
 }
+
 
 
 .commentList .item {

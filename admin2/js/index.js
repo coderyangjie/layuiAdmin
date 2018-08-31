@@ -1,12 +1,11 @@
 /**
  * Created by yangjie on 2018/8/27.
  */
-layui.use(['layer', 'form', 'element', 'jquery', 'dialog'], function() {
+layui.use(['layer', 'form', 'element', 'jquery'], function() {
     var layer = layui.layer;
     var element = layui.element;
     var form = layui.form;
     var $ = layui.jquery;
-    var dialog = layui.dialog;
     var hideBtn = $('#hideBtn');
     var mainLayout = $('#main-layout');
     var mainMask = $('.main-mask');
@@ -44,9 +43,14 @@ layui.use(['layer', 'form', 'element', 'jquery', 'dialog'], function() {
     //监听导航点击
     element.on('nav(rightNav)', function(elem) {
         var navA = $(elem).find('a');
-        var id = navA.attr('data-id');
+        var dataset = navA.context.dataset;
+   /*     var id = navA.attr('data-id');
         var url = navA.attr('data-url');
-        var text = navA.attr('data-text');
+        var text = navA.attr('data-text');*/
+        var id = dataset.id;
+        var url = dataset.url;
+        var text = dataset.text;
+
         if(!url){
             return;
         }
